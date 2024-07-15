@@ -30,11 +30,7 @@ export class HomeComponent {
 
   csvToArray(csvContent: string) {
     console.log('raw csv ----->', csvContent);
-    const csvSplitted: string[][] = csvContent
-      ?.split(/\r?\n|\r|\n/g)
-      .map((it) => it.trim())
-      .filter((it) => it !== '')
-      .map((it) => it.split(','));
+    const csvSplitted: string[][] = this.csvToArrayOfArrays(csvContent);
     const headers = csvSplitted[0];
     console.log('headers ----->', headers);
 
@@ -53,5 +49,15 @@ export class HomeComponent {
     }
 
     return result;
+  }
+
+  csvToArrayOfArrays(csv: string) {
+    const lines = csv.trim().split('\n');
+    const arrayOfArrays = lines.map((line) => {
+      return line
+        .split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/)
+        .map((value) => value.trim().replace(/^"|"$/g, ''));
+    });
+    return arrayOfArrays;
   }
 }
