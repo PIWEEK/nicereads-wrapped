@@ -1,0 +1,24 @@
+<main>
+  <section>
+    <h3>nicereads wrapped</h3>
+    <p>
+      nicereads wrapped is a cool app that gives you a summary of your reading.
+    </p>
+    <p>
+      Just upload a CSV file from your Goodreads or Open Library account, and
+      the app does the rest. It highlights your favorite books, the authors you
+      read the most, and your top genres, along with fun stats like the total
+      pages read and the longest book you finished.
+    </p>
+    <div class="input-container">
+      <input
+        type="file"
+        id="csv"
+        name="csv"
+        class="inputfile"
+        (change)="onSelectFile($event)"
+      />
+      <label for="csv">Import file</label>
+    </div>
+  </section>
+</main>
