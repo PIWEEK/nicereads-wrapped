@@ -1,0 +1,33 @@
+export interface OpenLibraryBook {
+  cover_i: string;
+  has_fulltext: boolean;
+  edition_count: number;
+  title: string;
+  author_name: string[];
+  first_publish_year: number;
+  key: string;
+  ia: string[];
+  author_key: string[];
+  public_scan_b: boolean;
+  cover_edition_key: string;
+  ebook_access: string;
+  ebook_count_i: number;
+  edition_key: string[];
+  format: string[];
+  isbn: string[];
+  last_modified_i: number;
+  number_of_pages_median: number;
+  publish_date: string[];
+  publish_year: number;
+  publisher: string[];
+  seed: string[];
+  title_suggest: string;
+  title_sort: string;
+  type: string;
+  readinglog_count: number;
+  want_to_read_count: number;
+  currently_reading_count: number;
+  already_read_count: number;
+  publisher_facet: string[];
+  author_facet: string[];
+}
