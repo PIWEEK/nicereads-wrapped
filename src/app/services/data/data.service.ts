@@ -31,8 +31,10 @@ export class DataService {
           await this.openLibraryService.findBook(opts);
         return {
           ...book,
-          coverId: openLibraryBook?.cover_i || undefined,
           genres: openLibraryBook?.subject || [],
+          cover: openLibraryBook?.cover_i
+            ? this.openLibraryService.getBookCoverById(openLibraryBook.cover_i)
+            : undefined,
         } as Book;
       })
     );
