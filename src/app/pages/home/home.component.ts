@@ -18,8 +18,9 @@ export class HomeComponent {
       var reader = new FileReader();
       reader.readAsText(target.files[0]);
       reader.onload = (e) => {
+        // save this in localstorage
         console.log(
-          'result array from objects  ----->',
+          'result  ----->',
           this.csvToArray(e?.target?.result as string)
         );
       };
@@ -29,10 +30,8 @@ export class HomeComponent {
   }
 
   csvToArray(csvContent: string) {
-    console.log('raw csv ----->', csvContent);
     const csvSplitted: string[][] = this.csvToArrayOfArrays(csvContent);
     const headers = csvSplitted[0];
-    console.log('headers ----->', headers);
 
     const result = [];
     for (let i = 1; i < csvSplitted.length; i++) {
@@ -41,10 +40,15 @@ export class HomeComponent {
 
       for (let j = 0; j < row.length; j++) {
         const headerKey = headers[j]?.toLowerCase().replace(/ /g, '_');
-        obj[headerKey] = row[j];
+        if (headerKey === 'isbn' || headerKey === 'isbn13') {
+          const regex = /(\d+)/;
+          const match = row[j].match(regex);
+          obj[headerKey] = (match && match[1]) || '';
+        } else {
+          obj[headerKey] = row[j];
+        }
       }
 
-      // Agregar el objeto a la lista de objetos
       result.push(obj);
     }
 
