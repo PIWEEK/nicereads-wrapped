@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { toCamelCase } from '../../utils/strings.util';
 import { GoodreadsExport } from '../../models';
 import { DataService } from '../../services/data/data.service';
-import { Data } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,16 @@ export class HomeComponent {
   public rawCsv: string = '';
   public goBtn = true;
 
-  constructor(private dataService: DataService) {}
+  dataService = inject(DataService);
+  router = inject(Router);
+
+  constructor() {
+    this.dataService.$data.subscribe((data) => {
+      if (data.length > 0) {
+        this.router.navigate(['/wrapped']);
+      }
+    });
+  }
 
   onSelectFile(event: Event) {
     const target = event.target as HTMLInputElement;

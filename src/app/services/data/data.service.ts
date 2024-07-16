@@ -48,17 +48,18 @@ export class DataService {
     this.$isLoading.next(false);
   }
 
-  public getFromLocalstorage(): GoodreadsExport[] {
+  public getFromLocalstorage(): Book[] {
     const data = localStorage.getItem('books');
     return data ? JSON.parse(data) : [];
   }
 
   public cleanLocalStorage(): void {
     localStorage.removeItem('books');
+    this.$data.next([]);
     console.log('-- Books removed from localstorage --');
   }
 
-  private saveLocalStorage(data: GoodreadsExport[]): void {
+  private saveLocalStorage(data: Book[]): void {
     localStorage.setItem('books', JSON.stringify(data));
   }
 }
