@@ -30,4 +30,5 @@ export interface OpenLibraryBook {
   already_read_count: number;
   publisher_facet: string[];
   author_facet: string[];
+  subject?: string[];
 }
