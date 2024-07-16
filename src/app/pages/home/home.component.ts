@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { toCamelCase } from '../../utils/strings.util';
+import { GoodreadsExport } from '../../models';
 
 @Component({
   selector: 'app-home',
@@ -29,17 +31,17 @@ export class HomeComponent {
     }
   }
 
-  csvToArray(csvContent: string) {
+  csvToArray(csvContent: string): GoodreadsExport[] {
     const csvSplitted: string[][] = this.csvToArrayOfArrays(csvContent);
     const headers = csvSplitted[0];
 
-    const result = [];
+    const result: GoodreadsExport[] = [];
     for (let i = 1; i < csvSplitted.length; i++) {
       const row = csvSplitted[i];
-      const obj: { [key: string]: string } = {};
+      const obj: GoodreadsExport = {};
 
       for (let j = 0; j < row.length; j++) {
-        const headerKey = headers[j]?.toLowerCase().replace(/ /g, '_');
+        const headerKey = toCamelCase(headers[j]) as keyof GoodreadsExport;
         if (headerKey === 'isbn' || headerKey === 'isbn13') {
           const regex = /(\d+)/;
           const match = row[j].match(regex);
