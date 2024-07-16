@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { toCamelCase } from '../../utils/strings.util';
 import { GoodreadsExport } from '../../models';
+import { DataService } from '../../services/data/data.service';
+import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,11 @@ import { GoodreadsExport } from '../../models';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  public rawCsv: string = '';
+  public goBtn = true;
+
+  constructor(private dataService: DataService) {}
+
   onSelectFile(event: Event) {
     const target = event.target as HTMLInputElement;
     if (
@@ -20,15 +27,17 @@ export class HomeComponent {
       var reader = new FileReader();
       reader.readAsText(target.files[0]);
       reader.onload = (e) => {
-        // save this in localstorage
-        console.log(
-          'result  ----->',
-          this.csvToArray(e?.target?.result as string)
-        );
+        this.rawCsv = e?.target?.result as string;
+        this.goBtn = false;
       };
     } else {
       console.log('failed reading the csv');
+      this.goBtn = true;
     }
+  }
+
+  generateData() {
+    this.dataService.processData(this.csvToArray(this.rawCsv));
   }
 
   csvToArray(csvContent: string): GoodreadsExport[] {
