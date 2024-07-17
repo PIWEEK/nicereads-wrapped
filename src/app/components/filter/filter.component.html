@@ -1,0 +1,43 @@
+<div>
+  <div>
+    <button
+      type="button"
+      [class.selected]="selected() === 'all-years'"
+      [disabled]="selected() === 'all-years'"
+      (click)="filterByYear()"
+    >
+      see all
+    </button>
+    @for (year of fYears(); track $index) { -
+    <button
+      type="button"
+      [class.selected]="isSelected('year', year)"
+      [disabled]="isSelected('year', year)"
+      (click)="filterByYear(year)"
+    >
+      {{ year }}
+    </button>
+    }
+  </div>
+
+  <div>
+    <button
+      type="button"
+      [class.selected]="selected() === 'all-shelves'"
+      [disabled]="selected() === 'all-shelves'"
+      (click)="filterByShelf()"
+    >
+      see all
+    </button>
+    @for (shelf of fShelves(); track $index) { -
+    <button
+      type="button"
+      [class.selected]="isSelected('shelf', shelf)"
+      [disabled]="isSelected('shelf', shelf)"
+      (click)="filterByShelf(shelf)"
+    >
+      {{ shelf }}
+    </button>
+    }
+  </div>
+</div>

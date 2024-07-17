@@ -3,11 +3,12 @@ import { DataService } from '../../services/data/data.service';
 import { Router } from '@angular/router';
 import { BookComponent } from '../../components/book/book.component';
 import { Book } from '../../models';
+import { FilterComponent } from '../../components/filter/filter.component';
 
 @Component({
   selector: 'app-wrapped',
   standalone: true,
-  imports: [BookComponent],
+  imports: [BookComponent, FilterComponent],
   templateUrl: './wrapped.component.html',
   styleUrl: './wrapped.component.css',
 })
@@ -16,6 +17,7 @@ export class WrappedComponent {
   router = inject(Router);
 
   books = signal<Book[]>([]);
+  filteredBooks = signal<Book[]>([]);
 
   constructor() {
     this.getBooks();
@@ -24,6 +26,10 @@ export class WrappedComponent {
   public clean(): void {
     this.dataService.cleanLocalStorage();
     this.router.navigate(['/']);
+  }
+
+  public onFilteredBooks(books: Book[]): void {
+    this.filteredBooks.set(books);
   }
 
   private getBooks(): void {
@@ -38,6 +44,7 @@ export class WrappedComponent {
 
         this.dataService.$data.next(localBooks);
         this.books.set(this.dataService.$data.getValue());
+        this.filteredBooks.set(this.books());
       } else {
         console.log('-- No books in localstorage --');
       }
@@ -45,6 +52,7 @@ export class WrappedComponent {
       console.log('-- Books in $data --');
 
       this.books.set(books);
+      this.filteredBooks.set(this.books());
     }
   }
 }
