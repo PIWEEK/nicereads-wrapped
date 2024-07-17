@@ -1,12 +1,14 @@
 <p>wrapped works!</p>
 <button (click)="clean()">clean localstorage</button>
 
-@if (books().length > 0) {
-<app-filter
-  (filteredBooks)="onFilteredBooks($event)"
-  [books]="books() || []"
-></app-filter>
+<div class="books-grid">
+  @if (books().length > 0) {
+  <app-filter
+    (filteredBooks)="onFilteredBooks($event)"
+    [books]="books() || []"
+  ></app-filter>
 
-} @for (book of filteredBooks(); track $index) {
-<app-book [book]="book"></app-book>
-}
+  } @for (book of filteredBooks(); track $index) {
+  <app-book [book]="book"></app-book>
+  }
+</div>

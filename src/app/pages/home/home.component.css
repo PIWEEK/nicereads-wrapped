@@ -1,0 +1,47 @@
+:host {
+  background: linear-gradient(
+    to bottom,
+    rgb(176, 230, 244) 0,
+    rgba(230, 198, 223, 255) 100%
+  );
+  block-size: 100vh;
+  display: block;
+  inline-size: 100%;
+}
+
+section {
+  text-align: center;
+}
+
+.title {
+  display: block;
+  font-size: 72px;
+  font-weight: 700;
+  margin: 0;
+  padding-top: 15%;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  display: inline-block;
+  margin-block-end: 20px;
+  border: 1px solid grey;
+  padding: 20px;
+
+  &.filled {
+    border: none;
+  }
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  cursor: pointer;
+}

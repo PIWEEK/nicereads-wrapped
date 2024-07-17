@@ -1,6 +1,9 @@
 <main>
+  @if(loader$ | async){
+  <app-loader class="loader"></app-loader>
+  }
   <section>
-    <h3>nicereads wrapped</h3>
+    <h1 class="title">nicereads wrapped</h1>
     <p>
       nicereads wrapped is a cool app that gives you a summary of your reading.
     </p>
@@ -18,8 +21,12 @@
         class="inputfile"
         (change)="onSelectFile($event)"
       />
-      <label for="csv">Import file</label>
+      <label [className]="fileName ? 'filled' : ''" for="csv">{{
+        fileName ? fileName : "Select here your csv..."
+      }}</label>
     </div>
-    <button [disabled]="goBtn" (click)="generateData()">Go!</button>
+    <button class="btn-primary" [disabled]="goBtn" (click)="generateData()">
+      let's get started!
+    </button>
   </section>
 </main>

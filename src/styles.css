@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  block-size: 100%;
+  inline-size: 100%;
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+section {
+  max-width: 660px;
+  margin: auto;
+}
+
+h1 {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.btn-primary {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: #fe4390;
+  border-radius: 8px;
+  border: none;
+  padding-block: 10px;
+  padding-inline: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+main {
+  height: 100%;
+}

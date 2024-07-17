@@ -4,17 +4,22 @@ import { GoodreadsExport } from '../../models';
 import { DataService } from '../../services/data/data.service';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { LoaderComponent } from '../../components/loader/loader.component';
+import { Subject } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [LoaderComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
   public rawCsv: string = '';
   public goBtn = true;
+  public fileName: string | undefined;
+  public loader$: Subject<boolean>;
 
   dataService = inject(DataService);
   router = inject(Router);
@@ -25,6 +30,8 @@ export class HomeComponent {
         this.router.navigate(['/wrapped']);
       }
     });
+
+    this.loader$ = this.dataService.$isLoading;
   }
 
   onSelectFile(event: Event) {
@@ -34,7 +41,8 @@ export class HomeComponent {
       target.files[0] &&
       target.files[0].type === 'text/csv'
     ) {
-      var reader = new FileReader();
+      let reader = new FileReader();
+      this.fileName = target.files[0].name;
       reader.readAsText(target.files[0]);
       reader.onload = (e) => {
         this.rawCsv = e?.target?.result as string;
