@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { Book } from '../../models';
-import { BookComponent } from '../book/book.component';
+import { Book } from '../../../../models';
+import { BookComponent } from '../../../../components/book/book.component';
 
 @Component({
   selector: 'app-see-all',

@@ -8,7 +8,7 @@ import {
   FilterComponent,
   SelectedFilter,
 } from '../../components/filter/filter.component';
-import { SeeAllComponent } from '../../components/see-all/see-all.component';
+import { SeeAllComponent } from './components/see-all/see-all.component';
 
 @Component({
   selector: 'app-wrapped',
