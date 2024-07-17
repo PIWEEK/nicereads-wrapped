@@ -1,0 +1,12 @@
+<div>
+  You have read {{ pages() }} pages in {{ year() === "all" ? "total" : year() }}
+</div>
+
+<div>
+  you can travel {{ pages() / 3 | number : "1.0-0" }}km with the pages of your
+  books
+</div>
+
+@for (list of lists(); track $index) {
+<app-list [title]="list.title" [items]="list.items"></app-list>
+}

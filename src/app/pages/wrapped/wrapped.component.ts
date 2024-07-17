@@ -1,7 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { DataService } from '../../services/data/data.service';
 import { Router } from '@angular/router';
-import { BookComponent } from '../../components/book/book.component';
 import { Book } from '../../models';
 import {
   FilterBy,
@@ -9,11 +8,12 @@ import {
   SelectedFilter,
 } from '../../components/filter/filter.component';
 import { SeeAllComponent } from './components/see-all/see-all.component';
+import { ByPagesComponent } from './components/by-pages/by-pages.component';
 
 @Component({
   selector: 'app-wrapped',
   standalone: true,
-  imports: [SeeAllComponent, FilterComponent],
+  imports: [SeeAllComponent, FilterComponent, ByPagesComponent],
   templateUrl: './wrapped.component.html',
   styleUrl: './wrapped.component.css',
 })
@@ -24,6 +24,7 @@ export class WrappedComponent {
   books = signal<Book[]>([]);
   filteredBooks = signal<Book[]>([]);
   view = signal<FilterBy>(FilterBy.all);
+  year = signal<'all' | number>('all');
 
   constructor() {
     this.getBooks();
@@ -40,6 +41,7 @@ export class WrappedComponent {
 
     // Change view based on selected filter
     this.view.set(filter.by);
+    this.year.set(filter.year);
   }
 
   private getBooks(): void {

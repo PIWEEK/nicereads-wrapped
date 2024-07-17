@@ -10,7 +10,7 @@
 } @case ('shelves') {
 <div>by bookshelves</div>
 } @case('pages') {
-<div>by pages</div>
+<app-by-pages [books]="filteredBooks()" [year]="year()"></app-by-pages>
 } @case('ratings') {
 <div>by rating</div>
 } }
