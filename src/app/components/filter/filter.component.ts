@@ -2,8 +2,21 @@ import { Component, input, OnInit, output, signal } from '@angular/core';
 import { Book } from '../../models';
 
 export interface Filters {
-  years: number[];
-  shelves: string[];
+  value: FilterBy;
+  name: string;
+}
+
+export interface SelectedFilter {
+  year: 'all' | number;
+  by: FilterBy;
+}
+
+export enum FilterBy {
+  all = 'all',
+  genre = 'genre',
+  shelves = 'shelves',
+  pages = 'pages',
+  ratings = 'ratings',
 }
 
 @Component({
@@ -16,9 +29,31 @@ export interface Filters {
 export class FilterComponent implements OnInit {
   public readonly books = input.required<Book[]>();
   public fYears = signal<number[]>([]);
-  public fShelves = signal<string[]>([]);
+  public filters = signal<Filters[]>([
+    { value: FilterBy.all, name: 'see all' },
+    {
+      value: FilterBy.genre,
+      name: 'by genre',
+    },
+    {
+      value: FilterBy.shelves,
+      name: 'by bookshelves',
+    },
+    {
+      value: FilterBy.pages,
+      name: 'by pages',
+    },
+    {
+      value: FilterBy.ratings,
+      name: 'by ratings',
+    },
+  ]);
+  public filterBy = output<SelectedFilter>();
   public filteredBooks = output<Book[]>();
-  public selected = signal<string>('all-shelves');
+  public selected = signal<SelectedFilter>({
+    year: 'all',
+    by: FilterBy.all,
+  });
 
   public ngOnInit(): void {
     this.getFilters();
@@ -39,17 +74,25 @@ export class FilterComponent implements OnInit {
     });
 
     this.fYears.set([...new Set(dates)].sort());
-    this.fShelves.set([...new Set(shelves)]);
   }
 
   public filterByYear(year?: number): void {
     if (!year) {
       this.filteredBooks.emit(this.books().filter((book) => book.dateRead));
-      this.selected.set('all-years');
+      this.selected.set({
+        year: 'all',
+        by: this.selected().by,
+      });
+      this.filterBy.emit(this.selected());
+
       return;
     }
 
-    this.selected.set(`year-${year}`);
+    this.selected.set({
+      year,
+      by: this.selected().by,
+    });
+    this.filterBy.emit(this.selected());
 
     this.filteredBooks.emit(
       this.books().filter((book) => {
@@ -59,25 +102,17 @@ export class FilterComponent implements OnInit {
   }
 
   public isSelected(
-    filter: 'year' | 'shelf',
-    value?: string | number
+    filter: 'year' | 'by',
+    value?: 'all' | number | FilterBy
   ): boolean {
-    return this.selected() === `${filter}-${value}`;
+    return this.selected()[filter] === value;
   }
 
-  public filterByShelf(shelf?: string): void {
-    if (!shelf) {
-      this.filteredBooks.emit(this.books());
-      this.selected.set('all-shelves');
-      return;
-    }
-
-    this.selected.set(`shelf-${shelf}`);
-
-    this.filteredBooks.emit(
-      this.books().filter((book) => {
-        return book?.bookshelves === shelf || book?.exclusiveShelf === shelf;
-      })
-    );
+  public filterByCategory(by: FilterBy): void {
+    this.selected.set({
+      year: this.selected().year,
+      by,
+    });
+    this.filterBy.emit(this.selected());
   }
 }

@@ -2,8 +2,8 @@
   <div>
     <button
       type="button"
-      [class.selected]="selected() === 'all-years'"
-      [disabled]="selected() === 'all-years'"
+      [class.selected]="isSelected('year', 'all')"
+      [disabled]="isSelected('year', 'all')"
       (click)="filterByYear()"
     >
       see all
@@ -21,23 +21,15 @@
   </div>
 
   <div>
+    @for (filter of filters(); track $index) {
     <button
       type="button"
-      [class.selected]="selected() === 'all-shelves'"
-      [disabled]="selected() === 'all-shelves'"
-      (click)="filterByShelf()"
+      [class.selected]="isSelected('by', filter.value)"
+      [disabled]="isSelected('by', filter.value)"
+      (click)="filterByCategory(filter.value)"
     >
-      see all
+      {{ filter.name }}
     </button>
-    @for (shelf of fShelves(); track $index) { -
-    <button
-      type="button"
-      [class.selected]="isSelected('shelf', shelf)"
-      [disabled]="isSelected('shelf', shelf)"
-      (click)="filterByShelf(shelf)"
-    >
-      {{ shelf }}
-    </button>
-    }
+    - }
   </div>
 </div>

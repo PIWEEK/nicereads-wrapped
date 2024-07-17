@@ -3,12 +3,17 @@ import { DataService } from '../../services/data/data.service';
 import { Router } from '@angular/router';
 import { BookComponent } from '../../components/book/book.component';
 import { Book } from '../../models';
-import { FilterComponent } from '../../components/filter/filter.component';
+import {
+  FilterBy,
+  FilterComponent,
+  SelectedFilter,
+} from '../../components/filter/filter.component';
+import { SeeAllComponent } from '../../components/see-all/see-all.component';
 
 @Component({
   selector: 'app-wrapped',
   standalone: true,
-  imports: [BookComponent, FilterComponent],
+  imports: [SeeAllComponent, FilterComponent],
   templateUrl: './wrapped.component.html',
   styleUrl: './wrapped.component.css',
 })
@@ -18,6 +23,7 @@ export class WrappedComponent {
 
   books = signal<Book[]>([]);
   filteredBooks = signal<Book[]>([]);
+  view = signal<FilterBy>(FilterBy.all);
 
   constructor() {
     this.getBooks();
@@ -28,8 +34,12 @@ export class WrappedComponent {
     this.router.navigate(['/']);
   }
 
-  public onFilteredBooks(books: Book[]): void {
-    this.filteredBooks.set(books);
+  public onFilterBy(filter: SelectedFilter): void {
+    // Filter books by selected year (using read date)
+    this.filterBooksByYear(filter.year);
+
+    // Change view based on selected filter
+    this.view.set(filter.by);
   }
 
   private getBooks(): void {
@@ -54,5 +64,19 @@ export class WrappedComponent {
       this.books.set(books);
       this.filteredBooks.set(this.books());
     }
+  }
+
+  private filterBooksByYear(year: 'all' | number) {
+    if (year === 'all') {
+      this.filteredBooks.set(this.books());
+      return;
+    }
+
+    this.filteredBooks.set(
+      this.books().filter(
+        (book) =>
+          book?.dateRead && new Date(book.dateRead).getFullYear() === year
+      )
+    );
   }
 }

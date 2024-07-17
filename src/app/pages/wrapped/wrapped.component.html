@@ -1,14 +1,16 @@
 <p>wrapped works!</p>
 <button (click)="clean()">clean localstorage</button>
 
-<div class="books-grid">
-  @if (books().length > 0) {
-  <app-filter
-    (filteredBooks)="onFilteredBooks($event)"
-    [books]="books() || []"
-  ></app-filter>
-
-  } @for (book of filteredBooks(); track $index) {
-  <app-book [book]="book"></app-book>
-  }
-</div>
+@if (books().length > 0) {
+<app-filter (filterBy)="onFilterBy($event)" [books]="books()"></app-filter>
+} @switch (view()) { @case ('all') {
+<app-see-all [books]="filteredBooks()"></app-see-all>
+} @case ('genre') {
+<div>by genre</div>
+} @case ('shelves') {
+<div>by bookshelves</div>
+} @case('pages') {
+<div>by pages</div>
+} @case('ratings') {
+<div>by rating</div>
+} }
