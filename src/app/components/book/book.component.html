@@ -1,0 +1,12 @@
+<div>
+  <img
+    [src]="book().cover || 'https://picsum.photos/335/500'"
+    [alt]="book().title"
+  />
+  <div>
+    {{ book().title }}
+  </div>
+  <div>
+    {{ book().author }}
+  </div>
+</div>

@@ -20,24 +20,42 @@ export class DataService {
   public async processData(data: GoodreadsExport[]): Promise<void> {
     this.$isLoading.next(true);
 
-    const books = await Promise.all(
-      data.map(async (book) => {
-        const opts: BooksOptions = {
-          title: book?.title || '',
-          author: book?.author || '',
-          isbn: book?.isbn || book?.isbn13 || '',
-        };
-        const openLibraryBook: OpenLibraryBook | undefined =
-          await this.openLibraryService.findBook(opts);
-        return {
-          ...book,
-          genres: openLibraryBook?.subject || [],
-          cover: openLibraryBook?.cover_i
-            ? this.openLibraryService.getBookCoverById(openLibraryBook.cover_i)
-            : undefined,
-        } as Book;
-      })
-    );
+    // const books = await Promise.all(
+    //   data.map(async (book) => {
+    //     const opts: BooksOptions = {
+    //       title: book?.title || '',
+    //       author: book?.author || '',
+    //       isbn: book?.isbn || book?.isbn13 || '',
+    //     };
+    //     const openLibraryBook: OpenLibraryBook | undefined =
+    //       await this.openLibraryService.findBook(opts);
+    //     return {
+    //       ...book,
+    //       genres: openLibraryBook?.subject || [],
+    //       cover: openLibraryBook?.cover_i
+    //         ? this.openLibraryService.getBookCoverById(openLibraryBook.cover_i)
+    //         : undefined,
+    //     } as Book;
+    //   })
+    // );
+
+    const books = [];
+    for (const book of data) {
+      const opts: BooksOptions = {
+        title: book?.title || '',
+        author: book?.author || '',
+        isbn: book?.isbn || book?.isbn13 || '',
+      };
+      const openLibraryBook: OpenLibraryBook | undefined =
+        await this.openLibraryService.findBook(opts);
+      books.push({
+        ...book,
+        genres: openLibraryBook?.subject || [],
+        cover: openLibraryBook?.cover_i
+          ? this.openLibraryService.getBookCoverById(openLibraryBook.cover_i)
+          : undefined,
+      } as Book);
+    }
 
     if (books.length > 0) {
       this.saveLocalStorage(books);

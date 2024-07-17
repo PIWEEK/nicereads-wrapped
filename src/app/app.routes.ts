@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { WrappedComponent } from './pages/wrapped/wrapped.component';
-import { LoggedInGuard } from './guard/HasDataGuard';
+import { HasDataGuard } from './guards/HasDataGuard';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [LoggedInGuard],
+    canActivate: [HasDataGuard],
   },
   {
     path: 'wrapped',

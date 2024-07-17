@@ -1,2 +1,6 @@
 <p>wrapped works!</p>
 <button (click)="clean()">clean localstorage</button>
+
+@for (book of books(); track $index) {
+<app-book [book]="book"></app-book>
+}

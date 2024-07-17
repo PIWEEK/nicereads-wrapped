@@ -58,8 +58,8 @@ export class OpenLibraryService {
   ): Promise<OpenLibraryBook | undefined> {
     const { title, author, isbn } = opts;
     return (
-      (await this.findBookByIsbn(isbn)) ||
-      (await this.findBookByTitleAndAuthor(title, author))
+      (await this.findBookByTitleAndAuthor(title, author)) ||
+      (await this.findBookByIsbn(isbn))
     );
   }
 

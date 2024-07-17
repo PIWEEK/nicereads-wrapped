@@ -3,6 +3,7 @@ import { toCamelCase } from '../../utils/strings.util';
 import { GoodreadsExport } from '../../models';
 import { DataService } from '../../services/data/data.service';
 import { Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ export class HomeComponent {
   router = inject(Router);
 
   constructor() {
-    this.dataService.$data.subscribe((data) => {
+    this.dataService.$data.pipe(takeUntilDestroyed()).subscribe((data) => {
       if (data.length > 0) {
         this.router.navigate(['/wrapped']);
       }
