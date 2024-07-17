@@ -49,3 +49,11 @@ p {
 main {
   height: 100%;
 }
+
+.common-lists {
+  display: flex;
+  column-gap: 50px;
+  align-content: stretch;
+  justify-content: center;
+  margin: auto;
+}
