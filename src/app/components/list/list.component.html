@@ -1,7 +1,9 @@
-<div>{{ title() }}</div>
+<div class="title">{{ title() }}</div>
 
-<ul>
+<ul class="list-items">
   @for (color of colors(); track $index) {
-  <li [attr.data-color]="color">{{ items()[$index] || "-" }}</li>
+  <li [title]="items()[$index] || '-'" [attr.data-color]="color">
+    {{ items()[$index] || "-" }}
+  </li>
   }
 </ul>

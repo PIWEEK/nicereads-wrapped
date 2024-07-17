@@ -1,0 +1,46 @@
+:host {
+}
+
+.title {
+  color: #f1ff46;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.list-items {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-width: 150px;
+
+  > li {
+    color: #000;
+    padding: 6px 12px 6px 12px;
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+
+    &[data-color="yellow"] {
+      background: #f1ff46;
+    }
+
+    &[data-color="green"] {
+      background: #12d761;
+    }
+
+    &[data-color="orange"] {
+      background: #ff8b1e;
+    }
+
+    &[data-color="pink"] {
+      background: #f774c2;
+    }
+
+    &[data-color="black"] {
+      background: #000;
+      color: #fff;
+    }
+  }
+}
