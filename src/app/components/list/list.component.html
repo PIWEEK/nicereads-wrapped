@@ -2,8 +2,11 @@
 
 <ul class="list-items">
   @for (color of colors(); track $index) {
-  <li [title]="items()[$index] || '-'" [attr.data-color]="color">
-    {{ items()[$index] || "-" }}
+  <li
+    [title]="(items()[$index] | noParentheses) || '-'"
+    [attr.data-color]="color"
+  >
+    {{ (items()[$index] | noParentheses) || "-" }}
   </li>
   }
 </ul>

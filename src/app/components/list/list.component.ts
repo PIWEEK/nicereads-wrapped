@@ -1,9 +1,10 @@
 import { Component, input, signal } from '@angular/core';
+import { NoParenthesesPipe } from '../../pipes/no-parentheses.pipe';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [],
+  imports: [NoParenthesesPipe],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
