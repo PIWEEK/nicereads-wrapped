@@ -1,24 +1,62 @@
 :host {
-  background: linear-gradient(
-    to bottom,
-    rgb(176, 230, 244) 0,
-    rgba(230, 198, 223, 255) 100%
-  );
   block-size: 100vh;
   display: block;
   inline-size: 100%;
-}
+  overflow: hidden;
+  position: relative;
 
-section {
-  text-align: center;
+  &::before {
+    content: "";
+    background-size: 55% 100%;
+    background-image: url("../../../../public/pink-spikes.svg");
+    width: 50%;
+    height: 75%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    z-index: -1;
+  }
+
+  &::after {
+    content: "";
+    background-image: url("../../../../public/yellow-spikes.svg");
+    width: 23%;
+    height: 90%;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: -85px;
+    z-index: -1;
+  }
 }
 
 .title {
+  color: #12d761;
   display: block;
   font-size: 72px;
   font-weight: 700;
   margin: 0;
   padding-top: 15%;
+  margin-block-end: 65px;
+}
+
+.text {
+  color: #12d761;
+  font-size: 18px;
+}
+
+.highlight {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.form {
+  margin-block-start: 65px;
+  text-align: center;
 }
 
 .inputfile {
@@ -31,10 +69,12 @@ section {
 }
 
 .inputfile + label {
+  color: #ffffff;
   display: inline-block;
   margin-block-end: 20px;
   border: 1px solid grey;
-  padding: 20px;
+  border-radius: 4px;
+  padding: 20px 40px;
 
   &.filled {
     border: none;
@@ -44,4 +84,8 @@ section {
 .inputfile:focus + label,
 .inputfile + label:hover {
   cursor: pointer;
+}
+
+.btn-primary {
+  margin-block-start: 65px;
 }

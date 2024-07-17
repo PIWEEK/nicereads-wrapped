@@ -7,6 +7,7 @@
 }
 
 body {
+  background: #000000;
   block-size: 100%;
   inline-size: 100%;
   margin: 0;
@@ -26,17 +27,21 @@ h1 {
   font-style: normal;
 }
 
+p {
+  margin: 0;
+}
+
 .btn-primary {
   font-family: "Lora", serif;
   font-optical-sizing: auto;
   font-style: normal;
-  background-color: #fe4390;
+  background-color: #f774c2;
   border-radius: 8px;
   border: none;
   padding-block: 10px;
   padding-inline: 20px;
   font-weight: 700;
-  color: #ffffff;
+  color: #000000;
   font-size: 16px;
 }
 
