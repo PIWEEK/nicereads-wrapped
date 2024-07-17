@@ -1,10 +1,14 @@
-<div>
-  You have read {{ pages() }} pages in {{ year() === "all" ? "total" : year() }}
+<div class="title">
+  You have read {{ pages() }} pages in
+  {{ year() === "all" ? "total" : year() }}!
 </div>
 
-<div>
-  you can travel {{ pages() / 3 | number : "1.0-0" }}km with the pages of your
-  books
+<div class="travel-distance">
+  <div class="graphic"></div>
+  <div class="text">
+    you can travel {{ pages() / 3 | number : "1.0-0" }}km with the pages of your
+    books
+  </div>
 </div>
 
 <div class="common-lists">

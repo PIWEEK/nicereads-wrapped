@@ -5,7 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class NoParenthesesPipe implements PipeTransform {
-  transform(value: string, ...args: unknown[]): unknown {
+  transform(value: string): string {
+    if (!value) {
+      return value;
+    }
     return value.replace(/ *\([^)]*\) */g, '').trim();
   }
 }
