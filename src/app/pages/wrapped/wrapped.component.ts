@@ -117,7 +117,7 @@ export class WrappedComponent {
 
       const sortedBooks = books.sort((a, b) =>
         a.dateRead && b.dateRead
-          ? new Date(b.dateRead).getTime() - new Date(a.dateRead).getTime()
+          ? new Date(a.dateRead).getTime() - new Date(b.dateRead).getTime()
           : 0
       );
 
