@@ -20,25 +20,6 @@ export class DataService {
   public async processData(data: GoodreadsExport[]): Promise<void> {
     this.$isLoading.next(true);
 
-    // const books = await Promise.all(
-    //   data.map(async (book) => {
-    //     const opts: BooksOptions = {
-    //       title: book?.title || '',
-    //       author: book?.author || '',
-    //       isbn: book?.isbn || book?.isbn13 || '',
-    //     };
-    //     const openLibraryBook: OpenLibraryBook | undefined =
-    //       await this.openLibraryService.findBook(opts);
-    //     return {
-    //       ...book,
-    //       genres: openLibraryBook?.subject || [],
-    //       cover: openLibraryBook?.cover_i
-    //         ? this.openLibraryService.getBookCoverById(openLibraryBook.cover_i)
-    //         : undefined,
-    //     } as Book;
-    //   })
-    // );
-
     const books = [];
     for (const book of data) {
       const opts: BooksOptions = {
@@ -51,6 +32,8 @@ export class DataService {
       books.push({
         ...book,
         genres: openLibraryBook?.subject || [],
+        numberOfPages:
+          book.numberOfPages || openLibraryBook?.number_of_pages_median || 0,
         cover: openLibraryBook?.cover_i
           ? this.openLibraryService.getBookCoverById(openLibraryBook.cover_i)
           : undefined,

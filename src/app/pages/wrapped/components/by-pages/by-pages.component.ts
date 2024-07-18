@@ -37,7 +37,7 @@ export class ByPagesComponent {
   private prepareList(v: Book[]): List[] {
     const pagesRange = [
       {
-        min: 0,
+        min: 1,
         max: 100,
         label: '0-100 pages',
       },
