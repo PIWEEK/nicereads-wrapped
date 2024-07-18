@@ -8,6 +8,11 @@ export interface BasicBook {
   cover: string;
 }
 
+export interface AllList {
+  year: number;
+  list: List[];
+}
+
 export interface List {
   title: string;
   items: string[];
@@ -26,6 +31,7 @@ export class SeeAllComponent {
       this.firstBook.set(this.getFirstBook(v));
       this.lastBook.set(this.getLastBook(v));
       this.booksByMonth.set(this.getBooksByMonth(v));
+      this.allBooksList.set(this.getBooksByYearAndMonth(v));
       return v;
     },
   });
@@ -33,6 +39,8 @@ export class SeeAllComponent {
   public firstBook = signal<BasicBook>({ title: '', cover: '' });
   public lastBook = signal<BasicBook>({ title: '', cover: '' });
   public booksByMonth = signal<List[]>([]);
+  public allBooksList = signal<AllList[]>([]);
+  public fYears = signal<number[]>([]);
 
   private getFirstBook(v: Book[]): BasicBook {
     const book = v[0] as Book;
@@ -80,5 +88,30 @@ export class SeeAllComponent {
         ),
       };
     });
+  }
+
+  private getBooksByYearAndMonth(v: Book[]): AllList[] {
+    let dates: number[] = [];
+    let allList: AllList[] = [];
+
+    v.forEach((book) => {
+      if (book.dateRead) {
+        dates.push(new Date(book.dateRead).getFullYear());
+      }
+    });
+
+    this.fYears.set([...new Set(dates)].sort());
+
+    this.fYears().forEach((year: number) => {
+      const filteredList = v.filter((book) => {
+        return book?.dateRead && new Date(book.dateRead).getFullYear() === year;
+      });
+      allList.push({
+        year,
+        list: this.getBooksByMonth(filteredList),
+      });
+    });
+
+    return allList;
   }
 }

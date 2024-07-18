@@ -47,4 +47,20 @@
   grid-template-columns: repeat(4, 1fr);
   row-gap: 50px;
   max-inline-size: 1000px;
+
+  &.by-year {
+    margin-block-start: 40px;
+  }
+}
+
+.year {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: #f1ff46;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  display: block;
+  margin-block-start: 95px;
 }
