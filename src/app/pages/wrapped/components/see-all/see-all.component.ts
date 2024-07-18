@@ -5,6 +5,7 @@ import { Book } from '../../../../models';
 
 export interface BasicBook {
   title: string;
+  author: string;
   cover: string;
 }
 
@@ -36,8 +37,8 @@ export class SeeAllComponent {
     },
   });
   public readonly year = input.required<'all' | number>();
-  public firstBook = signal<BasicBook>({ title: '', cover: '' });
-  public lastBook = signal<BasicBook>({ title: '', cover: '' });
+  public firstBook = signal<BasicBook>({ title: '', author: '', cover: '' });
+  public lastBook = signal<BasicBook>({ title: '', author: '', cover: '' });
   public booksByMonth = signal<List[]>([]);
   public allBooksList = signal<AllList[]>([]);
   public fYears = signal<number[]>([]);
@@ -46,6 +47,7 @@ export class SeeAllComponent {
     const book = v[0] as Book;
     return {
       title: book.title || '',
+      author: book.author || book.authorLF || '',
       cover: book.cover || '',
     };
   }
@@ -55,6 +57,7 @@ export class SeeAllComponent {
     const book = v[last] as Book;
     return {
       title: book.title || '',
+      author: book.author || book.authorLF || '',
       cover: book.cover || '',
     };
   }
