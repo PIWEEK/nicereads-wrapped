@@ -36,12 +36,9 @@ export class WrappedComponent {
   }
 
   public onFilterBy(filter: SelectedFilter): void {
-    // Filter books by selected year (using read date)
-    this.filterBooksByYear(filter.year);
-
-    // Change view based on selected filter
     this.view.set(filter.by);
     this.year.set(filter.year);
+    this.filter();
   }
 
   private getBooks(): void {
@@ -56,7 +53,7 @@ export class WrappedComponent {
 
         this.dataService.$data.next(localBooks);
         this.books.set(this.dataService.$data.getValue());
-        this.filteredBooks.set(this.books());
+        this.filter();
       } else {
         console.log('-- No books in localstorage --');
       }
@@ -64,21 +61,25 @@ export class WrappedComponent {
       console.log('-- Books in $data --');
 
       this.books.set(books);
-      this.filteredBooks.set(this.books());
+      this.filter();
     }
   }
 
-  private filterBooksByYear(year: 'all' | number) {
-    if (year === 'all') {
-      this.filteredBooks.set(this.books());
-      return;
+  private filter(): void {
+    if (this.year() === 'all') {
+      if (this.view() === FilterBy.shelves) {
+        this.filteredBooks.set(this.books());
+      } else {
+        this.filteredBooks.set(this.books().filter((book) => book?.dateRead));
+      }
+    } else {
+      this.filteredBooks.set(
+        this.books().filter(
+          (book) =>
+            book?.dateRead &&
+            new Date(book.dateRead).getFullYear() === this.year()
+        )
+      );
     }
-
-    this.filteredBooks.set(
-      this.books().filter(
-        (book) =>
-          book?.dateRead && new Date(book.dateRead).getFullYear() === year
-      )
-    );
   }
 }
