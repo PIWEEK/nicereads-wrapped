@@ -63,7 +63,7 @@
 
 .book-cover {
   border: 2px solid #f774c2;
-  inline-size: 219px;
+  inline-size: auto;
   block-size: 267px;
   margin-inline: 30px;
 }

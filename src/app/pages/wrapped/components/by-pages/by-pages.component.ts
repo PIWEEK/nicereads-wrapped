@@ -38,23 +38,23 @@ export class ByPagesComponent {
     const pagesRange = [
       {
         min: 1,
-        max: 100,
-        label: '0-100 pages',
-      },
-      {
-        min: 101,
         max: 200,
-        label: '100-200 pages',
+        label: '0-200 pages',
       },
       {
         min: 201,
-        max: 300,
-        label: '200-300 pages',
+        max: 400,
+        label: '200-400 pages',
       },
       {
-        min: 301,
+        min: 401,
+        max: 600,
+        label: '400-600 pages',
+      },
+      {
+        min: 601,
         max: undefined,
-        label: '300 pages or more',
+        label: '600 pages or more',
       },
     ];
 

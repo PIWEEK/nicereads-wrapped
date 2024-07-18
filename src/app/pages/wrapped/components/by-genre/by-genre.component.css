@@ -23,9 +23,10 @@
 }
 
 .genres {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  justify-items: center;
   align-items: center;
-  justify-content: center;
   margin-bottom: 30px;
   > .genre {
     background-size: contain;
@@ -78,4 +79,10 @@
       background-image: url("../../../../../../public/genres/04.svg");
     }
   }
+}
+
+.common-lists {
+  display: grid;
+  grid-template-columns: repeat(5, calc(20% - 50px));
+  justify-items: center;
 }
