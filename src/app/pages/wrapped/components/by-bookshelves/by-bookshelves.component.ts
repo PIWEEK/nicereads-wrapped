@@ -25,7 +25,7 @@ export class ByBookshelvesComponent {
 
   public bookShelves = signal<BookShelf[]>([]);
 
-  getBookShelves(v: Book[]) {
+  private getBookShelves(v: Book[]): void {
     const allBookShelves = [
       ...new Set(
         v.map((book: Book) => book.bookshelves || book.exclusiveShelf || '')

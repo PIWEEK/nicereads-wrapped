@@ -1,0 +1,10 @@
+@for (rating of ratings(); track $index) {
+<div class="bookshelf title">{{ rating.value }}</div>
+<div class="books-grid">
+  @if (rating.books.length === 0) {
+  <div class="empty">No books found</div>
+  } @else { @for (book of rating.books; track $index) {
+  <app-book [book]="book"></app-book>
+  } }
+</div>
+}
