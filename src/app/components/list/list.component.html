@@ -3,7 +3,7 @@
 <ul class="list-items">
   @for (item of items(); track $index) {
   <li
-    [title]="item || '-' | noParentheses"
+    [title]="item || '-' | noParentheses | removeTags"
     [innerHTML]="item || '-' | noParentheses"
   ></li>
   }

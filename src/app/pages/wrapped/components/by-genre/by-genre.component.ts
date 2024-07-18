@@ -47,7 +47,12 @@ export class ByGenreComponent {
         name: genre,
         books,
         qt: books.length,
-        list: books.map((b) => `${b.title}. ${b.author}`),
+        list: books.map(
+          (book: Book, index: number) =>
+            `${index + 1}. ${book.title} <br/> <span class="author">${
+              book.author
+            }</span>`
+        ),
       };
     });
 
