@@ -1,0 +1,8 @@
+@for (bookshelf of bookShelves(); track $index) {
+<div class="bookshelf title">{{ bookshelf.name }}</div>
+<div class="books-grid">
+  @for (book of bookshelf.books; track $index) {
+  <app-book [book]="book"></app-book>
+  }
+</div>
+}

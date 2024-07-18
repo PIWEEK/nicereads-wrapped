@@ -8,7 +8,7 @@
 } @case ('genre') {
 <div>by genre</div>
 } @case ('shelves') {
-<div>by bookshelves</div>
+<app-by-bookshelves [books]="filteredBooks()"></app-by-bookshelves>
 } @case('pages') {
 <app-by-pages [books]="filteredBooks()" [year]="year()"></app-by-pages>
 } @case('ratings') {

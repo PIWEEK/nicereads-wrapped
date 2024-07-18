@@ -9,11 +9,17 @@ import {
 } from '../../components/filter/filter.component';
 import { SeeAllComponent } from './components/see-all/see-all.component';
 import { ByPagesComponent } from './components/by-pages/by-pages.component';
+import { ByBookshelvesComponent } from './components/by-bookshelves/by-bookshelves.component';
 
 @Component({
   selector: 'app-wrapped',
   standalone: true,
-  imports: [SeeAllComponent, FilterComponent, ByPagesComponent],
+  imports: [
+    SeeAllComponent,
+    FilterComponent,
+    ByPagesComponent,
+    ByBookshelvesComponent,
+  ],
   templateUrl: './wrapped.component.html',
   styleUrl: './wrapped.component.css',
 })
