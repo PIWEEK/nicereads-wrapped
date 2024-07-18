@@ -12,6 +12,7 @@ import { ByPagesComponent } from './components/by-pages/by-pages.component';
 import { ByBookshelvesComponent } from './components/by-bookshelves/by-bookshelves.component';
 import { ByRatingsComponent } from './components/by-ratings/by-ratings.component';
 import { ByGenreComponent } from './components/by-genre/by-genre.component';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @Component({
   selector: 'app-wrapped',
@@ -23,6 +24,7 @@ import { ByGenreComponent } from './components/by-genre/by-genre.component';
     ByBookshelvesComponent,
     ByRatingsComponent,
     ByGenreComponent,
+    ModalComponent,
   ],
   templateUrl: './wrapped.component.html',
   styleUrl: './wrapped.component.css',
@@ -35,6 +37,7 @@ export class WrappedComponent {
   filteredBooks = signal<Book[]>([]);
   view = signal<FilterBy>(FilterBy.all);
   year = signal<'all' | number>('all');
+  isActive = false;
 
   constructor() {
     this.getBooks();
@@ -43,6 +46,10 @@ export class WrappedComponent {
   public clean(): void {
     this.dataService.cleanLocalStorage();
     this.router.navigate(['/']);
+  }
+
+  public toggleModal() {
+    this.isActive = !this.isActive;
   }
 
   public onFilterBy(filter: SelectedFilter): void {

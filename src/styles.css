@@ -33,17 +33,39 @@ p {
 }
 
 .btn-primary {
+  border: 2px solid #f774c2;
   font-family: "Lora", serif;
   font-optical-sizing: auto;
   font-style: normal;
   background-color: #f774c2;
   border-radius: 8px;
-  border: none;
   padding-block: 10px;
   padding-inline: 20px;
   font-weight: 700;
   color: #000000;
   font-size: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn-secondary {
+  border: 2px solid #f774c2;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding-block: 10px;
+  padding-inline: 20px;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 main {

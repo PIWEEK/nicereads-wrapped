@@ -1,8 +1,17 @@
 <main class="wrapped">
-  <button (click)="clean()">clean localstorage</button>
+  <div class="top">
+    <h1 class="small-h1">nicereads</h1>
+    <button class="btn-primary" type="button" (click)="toggleModal()">
+      generate new!
+    </button>
+  </div>
 
   @if (books().length > 0) {
-  <app-filter (filterBy)="onFilterBy($event)" [books]="books()"></app-filter>
+  <app-filter
+    class="filters"
+    (filterBy)="onFilterBy($event)"
+    [books]="books()"
+  ></app-filter>
   } @switch (view()) { @case ('all') {
   <app-see-all [books]="filteredBooks()" [year]="year()"></app-see-all>
   } @case ('genre') {
@@ -15,3 +24,37 @@
   <app-by-ratings [books]="filteredBooks()"></app-by-ratings>
   } }
 </main>
+
+<app-modal [active]="isActive">
+  <button type="button" (click)="toggleModal()" class="close-modal">
+    <svg
+      width="15.665"
+      xmlns="http://www.w3.org/2000/svg"
+      height="15.665"
+      viewBox="3541 3006 15.665 15.665"
+      fill="none"
+    >
+      <path
+        d="m3548.833 3012.092 6.092-6.092 1.74 1.74-6.092 6.093 6.092 6.092-1.74 1.74-6.092-6.092-6.093 6.092-1.74-1.74 6.092-6.092-6.092-6.093 1.74-1.74Z"
+        style="fill: rgb(255, 255, 255); fill-opacity: 1"
+        class="fills"
+        data-testid="Cross"
+      />
+    </svg>
+  </button>
+  <div class="description">
+    <p class="modal-text">You are going to upload a new csv.</p>
+    <p class="modal-text">
+      If you continue your curecurrentent wrapped is going to be deleted.
+    </p>
+    <p class="modal-text">Are you sure you want to continue?</p>
+  </div>
+  <div class="options">
+    <button type="button" (click)="toggleModal()" class="btn-secondary">
+      no, take me back
+    </button>
+    <button type="button" (click)="clean()" class="btn-primary">
+      yes, i want to continue
+    </button>
+  </div>
+</app-modal>

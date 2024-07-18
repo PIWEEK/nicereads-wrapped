@@ -3,6 +3,22 @@
   margin: auto;
 }
 
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: 30px;
+  margin-block-end: 40px;
+}
+
+.small-h1 {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: #f774c2;
+  font-weight: 700;
+  font-size: 16px;
+}
+
 .title {
   font-family: "Lora", serif;
   font-optical-sizing: auto;
@@ -11,4 +27,41 @@
   font-weight: 700;
   font-size: 36px;
   text-align: center;
+}
+
+.filters {
+  margin-inline: 30px;
+}
+
+/* modal */
+.close-modal {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.description {
+  margin-block-start: 50px;
+  margin-block-end: 70px;
+  margin-inline: 66px;
+}
+
+.modal-text {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.options {
+  display: flex;
+  margin-inline: 66px;
+  display: flex;
+  justify-content: space-around;
 }

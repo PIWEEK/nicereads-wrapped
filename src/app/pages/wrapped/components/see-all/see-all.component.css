@@ -1,6 +1,7 @@
 :host {
   display: block;
   margin-block-end: 100px;
+  margin-inline: 30px;
 }
 
 .start-end-year {
