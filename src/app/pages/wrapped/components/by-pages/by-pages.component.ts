@@ -72,13 +72,7 @@ export class ByPagesComponent {
 
       return {
         title: range.label,
-        items: books
-          .sort((a, b) =>
-            a.dateRead && b.dateRead
-              ? new Date(a.dateRead).getTime() - new Date(b.dateRead).getTime()
-              : 0
-          )
-          .map((book: Book) => `${book.title}. ${book.author}`),
+        items: books.map((book: Book) => `${book.title}. ${book.author}`),
       };
     });
   }

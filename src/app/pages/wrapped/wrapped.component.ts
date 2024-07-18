@@ -56,6 +56,7 @@ export class WrappedComponent {
         this.filter();
       } else {
         console.log('-- No books in localstorage --');
+        this.router.navigate(['/']);
       }
     } else {
       console.log('-- Books in $data --');
@@ -66,20 +67,44 @@ export class WrappedComponent {
   }
 
   private filter(): void {
-    if (this.year() === 'all') {
-      if (this.view() === FilterBy.shelves) {
+    if (this.view() === FilterBy.shelves) {
+      if (this.year() === 'all') {
         this.filteredBooks.set(this.books());
       } else {
-        this.filteredBooks.set(this.books().filter((book) => book?.dateRead));
+        this.filteredBooks.set(
+          this.books().filter((book) => {
+            if (book?.dateRead) {
+              return new Date(book.dateRead).getFullYear() === this.year();
+            }
+
+            if (book?.dateAdded) {
+              return new Date(book.dateAdded).getFullYear() === this.year();
+            }
+
+            return false;
+          })
+        );
       }
     } else {
-      this.filteredBooks.set(
-        this.books().filter(
+      let books;
+
+      if (this.year() === 'all') {
+        books = this.books().filter((book) => book?.dateRead);
+      } else {
+        books = this.books().filter(
           (book) =>
             book?.dateRead &&
             new Date(book.dateRead).getFullYear() === this.year()
-        )
+        );
+      }
+
+      const sortedBooks = books.sort((a, b) =>
+        a.dateRead && b.dateRead
+          ? new Date(b.dateRead).getTime() - new Date(a.dateRead).getTime()
+          : 0
       );
+
+      this.filteredBooks.set(sortedBooks);
     }
   }
 }
