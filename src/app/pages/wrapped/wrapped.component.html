@@ -1,16 +1,17 @@
-<p>wrapped works!</p>
-<button (click)="clean()">clean localstorage</button>
+<main class="wrapped">
+  <button (click)="clean()">clean localstorage</button>
 
-@if (books().length > 0) {
-<app-filter (filterBy)="onFilterBy($event)" [books]="books()"></app-filter>
-} @switch (view()) { @case ('all') {
-<app-see-all [books]="filteredBooks()"></app-see-all>
-} @case ('genre') {
-<div>by genre</div>
-} @case ('shelves') {
-<app-by-bookshelves [books]="filteredBooks()"></app-by-bookshelves>
-} @case('pages') {
-<app-by-pages [books]="filteredBooks()" [year]="year()"></app-by-pages>
-} @case('ratings') {
-<div>by rating</div>
-} }
+  @if (books().length > 0) {
+  <app-filter (filterBy)="onFilterBy($event)" [books]="books()"></app-filter>
+  } @switch (view()) { @case ('all') {
+  <app-see-all [books]="filteredBooks()"></app-see-all>
+  } @case ('genre') {
+  <div>by genre</div>
+  } @case ('shelves') {
+  <app-by-bookshelves [books]="filteredBooks()"></app-by-bookshelves>
+  } @case('pages') {
+  <app-by-pages [books]="filteredBooks()" [year]="year()"></app-by-pages>
+  } @case('ratings') {
+  <div>by rating</div>
+  } }
+</main>

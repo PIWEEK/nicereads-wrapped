@@ -1,10 +1,8 @@
-:host {
-}
-
 .title {
   color: #f1ff46;
   font-weight: 700;
   font-size: 24px;
+  font-family: "Lora", serif;
 }
 
 .list-items {

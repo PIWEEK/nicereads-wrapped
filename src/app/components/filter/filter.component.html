@@ -2,15 +2,17 @@
   <div>
     <button
       type="button"
+      class="filter-btn"
       [class.selected]="isSelected('year', 'all')"
       [disabled]="isSelected('year', 'all')"
       (click)="filterByYear()"
     >
       see all
     </button>
-    @for (year of fYears(); track $index) { -
+    @for (year of fYears(); track $index) {
     <button
       type="button"
+      class="filter-btn"
       [class.selected]="isSelected('year', year)"
       [disabled]="isSelected('year', year)"
       (click)="filterByYear(year)"
@@ -20,16 +22,19 @@
     }
   </div>
 
+  <div class="title">my books</div>
+
   <div>
     @for (filter of filters(); track $index) {
     <button
       type="button"
+      class="filter-btn"
       [class.selected]="isSelected('by', filter.value)"
       [disabled]="isSelected('by', filter.value)"
       (click)="filterByCategory(filter.value)"
     >
       {{ filter.name }}
     </button>
-    - }
+    }
   </div>
 </div>
