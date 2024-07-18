@@ -1,0 +1,23 @@
+<svg width="341.739" xmlns="http://www.w3.org/2000/svg" height="342.826" id="screenshot-c56dbe93-2ff3-80a9-8004-ab4012d7bcad" fill="none" version="1.1">
+  <g id="shape-c56dbe93-2ff3-80a9-8004-ab4012d7bcad" data-testid="Group">
+    <g id="shape-c56dbe93-2ff3-80a9-8004-ab400ce8b5f8" data-testid="Group">
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab3fa092cd74" data-testid="Rectangle">
+        <path d="m237.192 65.087 47.837 150.581-135.183 78.117-95.654-192.698s66.652 17.713 167-14c13.912-4.397 16-22 16-22Zm47.837 150.581" style="fill: rgb(18, 215, 97); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab3fa092cd74"/>
+      </g>
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab3faeb098bd" data-testid="Rectangle">
+        <path d="m161.983 55.373 144.467 97.81s-20.02 3.783-41.258 27.904c-62.244 70.692-83.965 114.316-83.965 114.316L65.03 186.068l96.953-130.695Z" style="fill: rgb(247, 116, 194); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab3faeb098bd"/>
+      </g>
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab3fb56b4256" data-testid="Rectangle">
+        <path d="m270.564 106.915-30.44 167.499-167.478-30.553s17.287-20.331 25.546-65.774c12.035-66.223 4.894-101.725 4.894-101.725l167.478 30.553Z" style="fill: rgb(255, 139, 30); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab3fb56b4256"/>
+      </g>
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab3fcef19b8f" data-testid="Rectangle">
+        <path d="M236.704 80.157s-10.245 13.202-7.512 36.93c10.029 87.087 26.655 129.293 26.655 129.293L95.192 263.087s27.281-38.288 11-118c-6.296-30.822-24.115-43.236-24.115-43.236l154.627-21.694Zm-130.512 64.93" style="fill: rgb(0, 0, 0); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab3fcef19b8f"/>
+      </g>
+    </g>
+    <g id="shape-c56dbe93-2ff3-80a9-8004-ab3f7cb68002" data-testid="Board">
+      <g class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab3f7cb68002">
+        <rect rx="0" ry="0" x="117.632" y="96.912" width="104.8" height="125.82" class="frame-background"/>
+      </g>
+    </g>
+  </g>
+</svg>

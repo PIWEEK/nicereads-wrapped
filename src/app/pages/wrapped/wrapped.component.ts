@@ -11,6 +11,7 @@ import { SeeAllComponent } from './components/see-all/see-all.component';
 import { ByPagesComponent } from './components/by-pages/by-pages.component';
 import { ByBookshelvesComponent } from './components/by-bookshelves/by-bookshelves.component';
 import { ByRatingsComponent } from './components/by-ratings/by-ratings.component';
+import { ByGenreComponent } from './components/by-genre/by-genre.component';
 
 @Component({
   selector: 'app-wrapped',
@@ -21,6 +22,7 @@ import { ByRatingsComponent } from './components/by-ratings/by-ratings.component
     ByPagesComponent,
     ByBookshelvesComponent,
     ByRatingsComponent,
+    ByGenreComponent,
   ],
   templateUrl: './wrapped.component.html',
   styleUrl: './wrapped.component.css',

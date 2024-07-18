@@ -1,0 +1,35 @@
+@if (genres().length > 0) {
+<div class="title">
+  {{ genres().length }} different genres, {{ genres()[0].name }} is the winner!
+</div>
+
+<div class="genres">
+  @for (genre of limitedGenres(); track $index) {
+  <div class="genre" [attr.data-background]="$index">
+    <div class="count">{{ genre.qt }}</div>
+    <div class="name">{{ genre.name }}</div>
+  </div>
+  }
+</div>
+
+<div class="common-lists">
+  @for (genre of limitedGenres(); track $index) {
+  <app-list [title]="genre.name" [items]="genre.list"></app-list>
+  }
+</div>
+
+} @else {
+<div class="title">No genres found</div>
+<div class="subtitle">
+  Maybe you can contribute to
+  <a href="https://openlibrary.org/" target="_blank">Open Library!</a>
+</div>
+
+<div class="genres">
+  @for (genre of ['', '', '', '', '']; track $index) {
+  <div class="genre" [attr.data-background]="$index">
+    <div class="name">:(</div>
+  </div>
+  }
+</div>
+}

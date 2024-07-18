@@ -1,0 +1,23 @@
+<svg width="364.103" xmlns="http://www.w3.org/2000/svg" height="364.08" id="screenshot-c56dbe93-2ff3-80a9-8004-ab40e474a140" fill="none" version="1.1">
+  <g id="shape-c56dbe93-2ff3-80a9-8004-ab40e474a140" data-testid="Group">
+    <g id="shape-c56dbe93-2ff3-80a9-8004-ab40e474a141" data-testid="Group">
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab40e474a143" data-testid="Rectangle">
+        <path d="M196.631 70.08 302.6 194.523 194.385 307.067 65.234 162.688 196.631 70.08ZM302.6 194.523" style="fill: rgb(18, 215, 97); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab40e474a143"/>
+      </g>
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab40e474a144" data-testid="Rectangle">
+        <path d="m139.926 74.641 155.476 46.006s-15.171 13.464-25 29c-62 98-50 152-50 152l-144-89 63.524-138.006Z" style="fill: rgb(247, 116, 194); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab40e474a144"/>
+      </g>
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab40e474a145" data-testid="Rectangle">
+        <path d="M265.402 86.647s-5.538 28.514-4 53c5.361 85.362 14.347 123.772 14.347 123.772l-178.347 1.228 1-165 167-13Z" style="fill: rgb(255, 139, 30); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab40e474a145"/>
+      </g>
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab40e474a146" data-testid="Rectangle">
+        <path d="m218.75 77.313 64.567 154.593-128.61 59.289-78.607-150.1s27.439 1.368 53.982-10.5c68.556-30.653 88.668-53.282 88.668-53.282Z" style="fill: rgb(0, 0, 0); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab40e474a146"/>
+      </g>
+    </g>
+    <g id="shape-c56dbe93-2ff3-80a9-8004-ab40e474a142" data-testid="Board">
+      <g class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab40e474a142">
+        <rect rx="0" ry="0" x="127.83" y="108.781" width="104.8" height="125.82" class="frame-background"/>
+      </g>
+    </g>
+  </g>
+</svg>

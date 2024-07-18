@@ -6,7 +6,7 @@
   } @switch (view()) { @case ('all') {
   <app-see-all [books]="filteredBooks()" [year]="year()"></app-see-all>
   } @case ('genre') {
-  <div>by genre</div>
+  <app-by-genre [books]="filteredBooks()"></app-by-genre>
   } @case ('shelves') {
   <app-by-bookshelves [books]="filteredBooks()"></app-by-bookshelves>
   } @case('pages') {

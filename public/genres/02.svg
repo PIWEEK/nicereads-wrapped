@@ -1,0 +1,24 @@
+<svg width="355.459" xmlns="http://www.w3.org/2000/svg" height="356.769" id="screenshot-c56dbe93-2ff3-80a9-8004-ab41da5f26fb" fill="none" version="1.1">
+  <g id="shape-c56dbe93-2ff3-80a9-8004-ab41da5f26fb" data-testid="Group">
+    <g id="shape-c56dbe93-2ff3-80a9-8004-ab41da5f26fc" data-testid="Group">
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab41da5f26fe" data-testid="Rectangle">
+        <path d="m69.426 136.981 144.03-77.272 87.128 129.558-168.415 95.716-62.743-148.002Zm144.03-77.272" style="fill: rgb(18, 215, 97); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab41da5f26fe"/>
+      </g>
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab41da5f26ff" data-testid="Rectangle">
+        <path d="m61.899 193.369 87.76-150.784s5.292 19.701 30.983 39.389c74.579 57.154 119.423 75.874 119.423 75.874L198.884 281.211 61.899 193.369Z" style="fill: rgb(247, 116, 194); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab41da5f26ff"/>
+      </g>
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab41da5f2700" data-testid="Rectangle">
+        <path d="m105.939 81.535 169.181 18.98-19.095 169.168s-11.195-13.883-36.383-16.709c-87.599-9.827-132 10-132 10l18.297-181.439Z" style="fill: rgb(255, 139, 30); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab41da5f2700"/>
+      </g>
+      <g id="shape-c56dbe93-2ff3-80a9-8004-ab41da5f2701" data-testid="Rectangle">
+        <path d="m76.545 117.135 150.545-38.5 44.727 146.234-163.114 45.061s8.333-8.767 6.387-22.295c-20-139-38.545-130.5-38.545-130.5Z" style="fill: rgb(0, 0, 0); fill-opacity: 1;" class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab41da5f2701"/>
+      </g>
+    </g>
+    <g id="shape-c56dbe93-2ff3-80a9-8004-ab41da5f26fd" data-testid="Board">
+      <g class="fills" id="fills-c56dbe93-2ff3-80a9-8004-ab41da5f26fd">
+        <rect rx="0" ry="0" x="124.283" y="99.176" width="104.8" height="125.82" class="frame-background"/>
+      </g>
+
+    </g>
+  </g>
+</svg>

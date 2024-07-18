@@ -17,7 +17,6 @@ export interface Rating {
 export class ByRatingsComponent {
   public readonly books = input.required<Book[], Book[]>({
     transform: (v: Book[]) => {
-      // Do your thing
       this.getRatings(v);
       return v;
     },
