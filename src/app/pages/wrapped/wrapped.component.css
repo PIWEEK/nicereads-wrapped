@@ -2,3 +2,13 @@
   max-width: 90%;
   margin: auto;
 }
+
+.title {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: #f1ff46;
+  font-weight: 700;
+  font-size: 36px;
+  text-align: center;
+}

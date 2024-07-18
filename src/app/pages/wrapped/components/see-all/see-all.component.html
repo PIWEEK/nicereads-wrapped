@@ -1,5 +1,32 @@
-<div class="books-grid">
-  @for (book of books(); track $index) {
-  <app-book [book]="book"></app-book>
-  }
+<div class="title">
+  {{ books().length }} books finished in
+  {{ year() === "all" ? "total" : year() }}!
+</div>
+
+@if (year() !== "all") {
+<div class="start-end-year">
+  <div class="last-book book-container">
+    <span class="text">your last book of the year</span>
+    @if(lastBook().cover) {
+    <img class="book-cover" [src]="lastBook().cover" />
+    } @else {
+    <img class="book-cover" src="https://placehold.co/400x600" />
+    }
+  </div>
+  <span class="graphic"></span>
+  <div class="first-book book-container">
+    @if(firstBook().cover) {
+    <img class="book-cover" [src]="firstBook().cover" />
+    } @else {
+    <img class="book-cover" src="https://placehold.co/400x600" />
+    }
+    <span class="text">your first book of the year</span>
+  </div>
+</div>
+}
+
+<div class="common-lists">
+  @for (month of booksByMonth(); track $index) { @if (month.items.length) {
+  <app-list [title]="month.title" [items]="month.items"></app-list>
+  } }
 </div>

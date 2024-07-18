@@ -4,7 +4,7 @@
   @if (books().length > 0) {
   <app-filter (filterBy)="onFilterBy($event)" [books]="books()"></app-filter>
   } @switch (view()) { @case ('all') {
-  <app-see-all [books]="filteredBooks()"></app-see-all>
+  <app-see-all [books]="filteredBooks()" [year]="year()"></app-see-all>
   } @case ('genre') {
   <div>by genre</div>
   } @case ('shelves') {
