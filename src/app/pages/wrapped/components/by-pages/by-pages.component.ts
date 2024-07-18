@@ -72,7 +72,12 @@ export class ByPagesComponent {
 
       return {
         title: range.label,
-        items: books.map((book: Book) => `${book.title}. ${book.author}`),
+        items: books.map(
+          (book: Book, index: number) =>
+            `${index + 1}. ${book.title} <br/> <span class="author">${
+              book.author
+            }</span>`
+        ),
       };
     });
   }

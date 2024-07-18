@@ -2,8 +2,9 @@
 
 <ul class="list-items">
   @for (item of items(); track $index) {
-  <li [title]="item || '-' | noParentheses">
-    {{ item || "-" | noParentheses }}
-  </li>
+  <li
+    [title]="item || '-' | noParentheses"
+    [innerHTML]="item || '-' | noParentheses"
+  ></li>
   }
 </ul>

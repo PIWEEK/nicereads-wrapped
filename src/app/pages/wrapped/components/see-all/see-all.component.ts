@@ -72,7 +72,12 @@ export class SeeAllComponent {
       );
       return {
         title: months[+month],
-        items: monthBooks.map((book: Book) => `${book.title}. ${book.author}`),
+        items: monthBooks.map(
+          (book: Book, index: number) =>
+            `${index + 1}. ${book.title} <br />  <span class="author">${
+              book.author
+            }</span>`
+        ),
       };
     });
   }
