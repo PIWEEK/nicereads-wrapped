@@ -1,3 +1,9 @@
+:host {
+  display: block;
+  margin-block-end: 100px;
+  margin-inline: 30px;
+}
+
 .books-grid {
   display: grid;
   grid-gap: 20px;
