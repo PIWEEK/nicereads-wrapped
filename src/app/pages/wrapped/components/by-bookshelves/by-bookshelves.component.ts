@@ -29,12 +29,12 @@ export class ByBookshelvesComponent {
       ...new Set(
         v.map((book: Book) => book.exclusiveShelf || book.bookshelves || '')
       ),
-    ].filter((n) => n !== 'currently-reading');
+    ].filter((n) => n === 'read' || n === 'to-read');
 
     const bookshelves: List[] = allBookShelves.map((bookShelf) => {
       const bookshelveBooks = v.filter(
         (book: Book) =>
-          (book.exclusiveShelf === bookShelf || book.bookshelves === bookShelf) && book.bookshelves !== 'currently-reading'
+          book.exclusiveShelf === bookShelf || book.bookshelves === bookShelf
       );
       return {
         title: this.getBookShelfName(bookShelf),

@@ -34,8 +34,6 @@ export class SeeAllComponent {
       this.booksByMonth.set(this.getBooksByMonth(v));
       this.allBooksList.set(this.getBooksByYearAndMonth(v));
 
-      console.log(this.firstBook());
-      console.log(this.lastBook());
       return v;
     },
   });
