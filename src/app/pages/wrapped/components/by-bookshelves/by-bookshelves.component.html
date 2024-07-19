@@ -1,12 +1,17 @@
-@for (bookshelf of bookShelves(); track $index) {
-  @if(bookshelf.title === 'want to read') {
-    <div class="bookshelf title">
-      you have {{ bookshelf.items.length }} books pending!
-    </div>
-  }
+@for (bookshelf of bookShelves(); track $index) { @if(bookshelf.title === 'want to read') {
+<div class="bookshelf title">
+  you have {{ bookshelf.items.length }} books pending!
+</div>
+  @if (year() !== "all") {
+  <span class="subtitle">Maybe it's time to tackle those books you added in {{ year() }} that you still haven't read.</span>
+  } }
 }
 <div class="common-lists">
-@for (bookshelf of bookShelves(); track $index) {
-  <app-list [title]="bookshelf.title" [items]="bookshelf.items" [size]="'L'"></app-list>
-}
+  @for (bookshelf of bookShelves(); track $index) {
+  <app-list
+    [title]="bookshelf.title"
+    [items]="bookshelf.items"
+    [size]="'L'"
+  ></app-list>
+  }
 </div>

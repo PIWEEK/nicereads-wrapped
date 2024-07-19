@@ -15,6 +15,7 @@ export interface List {
   styleUrl: './by-bookshelves.component.css',
 })
 export class ByBookshelvesComponent {
+  public readonly year = input.required<'all' | number>();
   public readonly books = input.required<Book[], Book[]>({
     transform: (v: Book[]) => {
       this.bookShelves.set(this.getBookShelves(v));

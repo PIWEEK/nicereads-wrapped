@@ -19,6 +19,16 @@
   font-family: "Lora", serif;
 }
 
+.subtitle {
+  color: #f1ff46;
+  display: block;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  font-family: "Lora", serif;
+  margin-block-start: 24px;
+}
+
 .common-lists {
   margin-block-start: 95px;
   display: grid;
