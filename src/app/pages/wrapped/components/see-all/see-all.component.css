@@ -5,9 +5,12 @@
 }
 
 .start-end-year {
-  display: flex;
+  display: grid;
   justify-content: center;
-  margin-block-start: 55px;
+  padding-block-start: 55px;
+  grid-template-columns: 30% 40% 30%;
+  max-width: 1300px;
+  margin: auto;
 
   & .text {
     font-family: "Lora", serif;
@@ -77,7 +80,7 @@
   background-image: url("../../../../../../public//line-yellow.svg");
   background-repeat: no-repeat;
   background-position: center;
-  inline-size: 630px;
+  background-size: contain;
 }
 
 .common-lists {
