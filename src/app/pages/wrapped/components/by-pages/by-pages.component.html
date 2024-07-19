@@ -12,7 +12,7 @@
 </div>
 
 <div class="common-lists">
-  @for (list of lists(); track $index) {
+  @for (list of lists(); track $index) { @if(list.items.length > 0) {
   <app-list [title]="list.title" [items]="list.items"></app-list>
-  }
+  } }
 </div>
