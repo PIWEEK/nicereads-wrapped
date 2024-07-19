@@ -11,12 +11,10 @@
 }
 
 .small-h1 {
-  font-family: "Lora", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  color: #f774c2;
-  font-weight: 700;
-  font-size: 16px;
+  margin: 0;
+  > img {
+    block-size: 44px;
+  }
 }
 
 .title {
