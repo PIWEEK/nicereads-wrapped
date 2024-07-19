@@ -24,7 +24,7 @@
           (change)="onSelectFile($event)"
         />
         <label [className]="fileName ? 'filled' : ''" for="csv">{{
-          fileName ? fileName : "Select here your csv"
+          fileName ? fileName : "Upload here your csv"
         }}</label>
       </div>
       <button class="btn-primary" [disabled]="goBtn" (click)="generateData()">
@@ -32,4 +32,7 @@
       </button>
     </div>
   </section>
+  <div class="footer">
+    <p>created with love by maria, marina and clara</p>
+  </div>
 </main>

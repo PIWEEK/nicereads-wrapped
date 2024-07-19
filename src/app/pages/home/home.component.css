@@ -69,10 +69,10 @@
 }
 
 .inputfile + label {
-  color: #ffffff;
+  color: #12d761;
   display: inline-block;
   margin-block-end: 20px;
-  border: 1px solid grey;
+  border: 1px solid #12d761;
   border-radius: 4px;
   padding: 20px 40px;
 
@@ -88,4 +88,14 @@
 
 .btn-primary {
   margin-block-start: 65px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  inline-size: 100%;
+  margin-block-end: 26px;
+  color: white;
+  text-align: center;
 }
