@@ -1,8 +1,12 @@
 @for (bookshelf of bookShelves(); track $index) {
-<div class="bookshelf title">{{ bookshelf.name }}</div>
-<div class="books-grid">
-  @for (book of bookshelf.books; track $index) {
-  <app-book [book]="book"></app-book>
+  @if(bookshelf.title === 'want to read') {
+    <div class="bookshelf title">
+      you have {{ bookshelf.items.length }} books pending!
+    </div>
   }
-</div>
 }
+<div class="common-lists">
+@for (bookshelf of bookShelves(); track $index) {
+  <app-list [title]="bookshelf.title" [items]="bookshelf.items" [size]="'L'"></app-list>
+}
+</div>

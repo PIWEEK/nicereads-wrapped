@@ -1,3 +1,8 @@
+:host {
+  display: flex;
+  column-gap: 6px;
+}
+
 .not-rated {
   font-family: Lora;
   font-size: 24;

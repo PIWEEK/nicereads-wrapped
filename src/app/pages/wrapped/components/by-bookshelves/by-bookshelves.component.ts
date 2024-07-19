@@ -1,45 +1,59 @@
 import { Component, input, signal } from '@angular/core';
 import { Book } from '../../../../models';
-import { BookComponent } from '../../../../components/book/book.component';
+import { ListComponent } from '../../../../components/list/list.component';
 
-export interface BookShelf {
-  name: string;
-  books: Book[];
+export interface List {
+  title: string;
+  items: string[];
 }
 
 @Component({
   selector: 'app-by-bookshelves',
   standalone: true,
-  imports: [BookComponent],
+  imports: [ListComponent],
   templateUrl: './by-bookshelves.component.html',
   styleUrl: './by-bookshelves.component.css',
 })
 export class ByBookshelvesComponent {
   public readonly books = input.required<Book[], Book[]>({
     transform: (v: Book[]) => {
-      // Do your thing
-      this.getBookShelves(v);
+      this.bookShelves.set(this.getBookShelves(v));
       return v;
     },
   });
 
-  public bookShelves = signal<BookShelf[]>([]);
+  public bookShelves = signal<List[]>([]);
 
-  private getBookShelves(v: Book[]): void {
+  private getBookShelves(v: Book[]): List[] {
     const allBookShelves = [
       ...new Set(
-        v.map((book: Book) => book.bookshelves || book.exclusiveShelf || '')
+        v.map((book: Book) => book.exclusiveShelf || book.bookshelves || '')
       ),
-    ].filter((n) => n);
+    ].filter((n) => n !== 'currently-reading');
 
-    const bookshelves: BookShelf[] = allBookShelves.map((bookShelf) => ({
-      name: bookShelf,
-      books: v.filter(
+    const bookshelves: List[] = allBookShelves.map((bookShelf) => {
+      const bookshelveBooks = v.filter(
         (book: Book) =>
-          book.bookshelves === bookShelf || book.exclusiveShelf === bookShelf
-      ),
-    }));
+          (book.exclusiveShelf === bookShelf || book.bookshelves === bookShelf) && book.bookshelves !== 'currently-reading'
+      );
+      return {
+        title: this.getBookShelfName(bookShelf),
+        items: bookshelveBooks.map(
+          (book: Book, index: number) =>
+            `${index + 1}. ${book.title} <br />  <span class="author">${
+              book.author
+            }</span>`
+        ),
+      };
+    });
+    return bookshelves;
+  }
 
-    this.bookShelves.set(bookshelves);
+  private getBookShelfName(bookshelf: string) {
+    if (bookshelf === 'to-read') {
+      return 'want to read';
+    } else {
+      return 'read';
+    }
   }
 }
