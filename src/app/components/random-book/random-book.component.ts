@@ -1,21 +1,33 @@
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { getRandomNumber, getRandomValueFromArray } from '../../utils';
+import { Book } from '../../models';
+import { NoParenthesesPipe } from '../../pipes/no-parentheses.pipe';
 
 @Component({
   selector: 'app-random-book',
   standalone: true,
-  imports: [],
+  imports: [NoParenthesesPipe],
   template: `<div
     class="book"
     [style.width]="bookWidth()"
     [style.height]="bookHeight()"
   >
+    <div class="spine" [style.background-color]="coverColor()">
+      <div class="book-title">
+        {{ book()?.title || '' | noParentheses }}
+      </div>
+      <div class="book-writer">
+        {{ book()?.author }}
+      </div>
+    </div>
     <div [style.background-color]="coverColor()" class="cover left"></div>
     <div [style.background-color]="coverColor()" class="cover right"></div>
   </div>`,
   styleUrl: './random-book.component.css',
 })
 export class RandomBookComponent {
+  public book = input<Book | undefined>(undefined);
+
   public colors = [
     // Neon Yellow
     '#FFFF00',
@@ -62,10 +74,16 @@ export class RandomBookComponent {
   }
 
   public getWidth(): string {
-    return getRandomNumber(1, 40) + 40 + 'px';
+    const pages = this.book()?.numberOfPages
+      ? +(this.book()?.numberOfPages || 0)
+      : 0;
+
+    return pages > 0
+      ? `${Math.floor(pages / 2)}px`
+      : `${getRandomNumber(1, 40) + 40}px`;
   }
 
   public getHeight(): string {
-    return getRandomNumber(1, 50) + 150 + 'px';
+    return `${getRandomNumber(1, 80) + 180}px`;
   }
 }

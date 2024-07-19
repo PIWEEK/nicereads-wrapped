@@ -1,25 +1,28 @@
 import { Component, input, signal } from '@angular/core';
 import { RandomBookComponent } from '../random-book/random-book.component';
 import { DecimalPipe } from '@angular/common';
+import { Book } from '../../models';
+import { NoParenthesesPipe } from '../../pipes/no-parentheses.pipe';
 
 @Component({
   selector: 'app-random-books-pile',
   standalone: true,
-  imports: [RandomBookComponent, DecimalPipe],
+  imports: [RandomBookComponent, DecimalPipe, NoParenthesesPipe],
   templateUrl: './random-books-pile.component.html',
   styleUrl: './random-books-pile.component.css',
 })
 export class RandomBooksPileComponent {
-  public readonly numberOfBooks = input.required<number, number>({
-    transform: (v: number) => {
-      this.arrayBooks.set(Array.from({ length: v }, (_, i) => i));
+  public books = input.required<Book[], Book[]>({
+    transform: (v: Book[]) => {
+      const pages = v.reduce((a, b) => {
+        return b.numberOfPages ? a + +(b.numberOfPages || 0) : a;
+      }, 0);
+      this.size.set(this.getSize(pages));
       return v;
     },
   });
 
-  public readonly pages = input.required<number>();
-
-  public arrayBooks = signal<number[]>([]);
+  public size = signal<string>('');
 
   public getSize(pages: number) {
     const milimiters = pages * 0.21;
