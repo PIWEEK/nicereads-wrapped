@@ -27,6 +27,9 @@
           fileName ? fileName : "Upload here your csv"
         }}</label>
       </div>
+      @if (wrongFile) {
+      <span class="error">Wrong file type, it should be a csv</span>
+      }
       <button class="btn-primary" [disabled]="goBtn" (click)="generateData()">
         let's get started!
       </button>

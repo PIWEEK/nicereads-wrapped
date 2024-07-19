@@ -99,3 +99,8 @@
   color: white;
   text-align: center;
 }
+
+.error {
+  color: #12d761;
+  display: block;
+}

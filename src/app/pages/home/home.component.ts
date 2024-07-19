@@ -16,10 +16,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  public rawCsv: string = '';
-  public goBtn = true;
-  public fileName: string | undefined;
-  public loader$: Subject<boolean>;
+  rawCsv: string = '';
+  goBtn = true;
+  fileName: string | undefined;
+  loader$: Subject<boolean>;
+  wrongFile = false;
 
   dataService = inject(DataService);
   router = inject(Router);
@@ -46,16 +47,20 @@ export class HomeComponent {
       reader.readAsText(target.files[0]);
       reader.onload = (e) => {
         this.rawCsv = e?.target?.result as string;
+        this.wrongFile = false;
         this.goBtn = false;
       };
     } else {
-      console.log('failed reading the csv');
+      this.wrongFile = true;
       this.goBtn = true;
+      this.fileName = '';
     }
   }
 
   generateData() {
-    this.dataService.processData(this.csvToArray(this.rawCsv));
+    if (this.rawCsv) {
+      this.dataService.processData(this.csvToArray(this.rawCsv));
+    }
   }
 
   csvToArray(csvContent: string): GoodreadsExport[] {
