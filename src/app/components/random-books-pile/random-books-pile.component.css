@@ -1,0 +1,23 @@
+:host {
+  text-align: center;
+  display: block;
+}
+
+.subtitle {
+  color: #f774c2;
+  font-weight: 700;
+  font-size: 36px;
+  font-family: "Lora", serif;
+  margin-bottom: 70px;
+}
+
+.books-pile {
+  display: inline-flex;
+  align-items: end;
+  gap: 2px;
+  justify-content: start;
+  margin-bottom: 150px;
+  max-width: 100%;
+  overflow: scroll;
+  padding: 10px 0;
+}

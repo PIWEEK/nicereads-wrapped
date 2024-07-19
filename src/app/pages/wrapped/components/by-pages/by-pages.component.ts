@@ -2,6 +2,7 @@ import { Component, input, signal } from '@angular/core';
 import { Book } from '../../../../models';
 import { ListComponent } from '../../../../components/list/list.component';
 import { DecimalPipe } from '@angular/common';
+import { RandomBooksPileComponent } from '../../../../components/random-books-pile/random-books-pile.component';
 
 export interface List {
   title: string;
@@ -11,7 +12,7 @@ export interface List {
 @Component({
   selector: 'app-by-pages',
   standalone: true,
-  imports: [ListComponent, DecimalPipe],
+  imports: [ListComponent, DecimalPipe, RandomBooksPileComponent],
   templateUrl: './by-pages.component.html',
   styleUrl: './by-pages.component.css',
 })

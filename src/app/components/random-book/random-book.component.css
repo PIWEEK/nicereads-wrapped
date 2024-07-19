@@ -1,0 +1,21 @@
+.book {
+  position: relative;
+  display: block;
+  background: white;
+
+  .cover {
+    position: absolute;
+    top: -2.5px;
+    display: block;
+    width: 4px;
+    height: calc(100% + 5px);
+
+    &.left {
+      left: 0px;
+    }
+
+    &.right {
+      right: 0px;
+    }
+  }
+}

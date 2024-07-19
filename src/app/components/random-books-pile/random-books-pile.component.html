@@ -1,0 +1,10 @@
+<div class="subtitle">
+  Piled up, all those pages are
+  {{ getSize(pages()) }} meters long!
+</div>
+
+<div class="books-pile">
+  @for (book of arrayBooks(); track $index) {
+  <app-random-book></app-random-book>
+  }
+</div>

@@ -11,6 +11,11 @@
   </div>
 </div>
 
+<app-random-books-pile
+  [numberOfBooks]="books().length"
+  [pages]="pages()"
+></app-random-books-pile>
+
 <div class="common-lists">
   @for (list of lists(); track $index) { @if(list.items.length > 0) {
   <app-list [title]="list.title" [items]="list.items"></app-list>
