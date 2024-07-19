@@ -37,6 +37,13 @@ export class DataService {
         cover: openLibraryBook?.cover_i
           ? this.openLibraryService.getBookCoverById(openLibraryBook.cover_i)
           : undefined,
+
+        /** Consider read books without dateRead */
+        dateRead:
+          book?.dateRead ||
+          (book.exclusiveShelf === 'read' && book.dateAdded
+            ? book.dateAdded
+            : ''),
       } as Book);
     }
 
