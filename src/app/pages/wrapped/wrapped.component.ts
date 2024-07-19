@@ -13,6 +13,7 @@ import { ByBookshelvesComponent } from './components/by-bookshelves/by-bookshelv
 import { ByRatingsComponent } from './components/by-ratings/by-ratings.component';
 import { ByGenreComponent } from './components/by-genre/by-genre.component';
 import { ModalComponent } from '../../components/modal/modal.component';
+import { ByAuthorComponent } from './components/by-author/by-author.component';
 
 @Component({
   selector: 'app-wrapped',
@@ -24,6 +25,7 @@ import { ModalComponent } from '../../components/modal/modal.component';
     ByBookshelvesComponent,
     ByRatingsComponent,
     ByGenreComponent,
+    ByAuthorComponent,
     ModalComponent,
   ],
   templateUrl: './wrapped.component.html',

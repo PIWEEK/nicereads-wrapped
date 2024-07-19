@@ -1,0 +1,11 @@
+<div class="bookshelf title">these are your most read writers!</div>
+
+<div class="common-lists">
+  @for (author of authors(); track $index) {
+  <app-list
+    [title]="author.title"
+    [items]="author.items"
+    [size]="'M'"
+  ></app-list>
+  }
+</div>

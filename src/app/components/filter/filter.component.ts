@@ -17,6 +17,7 @@ export enum FilterBy {
   shelves = 'shelves',
   pages = 'pages',
   ratings = 'ratings',
+  authors = 'authors',
 }
 
 @Component({
@@ -46,6 +47,10 @@ export class FilterComponent implements OnInit {
     {
       value: FilterBy.ratings,
       name: 'by ratings',
+    },
+    {
+      value: FilterBy.authors,
+      name: 'by writers',
     },
   ]);
   public filterBy = output<SelectedFilter>();

@@ -22,6 +22,8 @@
   <app-by-pages [books]="filteredBooks()" [year]="year()"></app-by-pages>
   } @case('ratings') {
   <app-by-ratings [books]="filteredBooks()"></app-by-ratings>
+  } @case ('authors') {
+  <app-by-author [books]="filteredBooks()"></app-by-author>
   } }
 </main>
 
