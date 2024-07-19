@@ -1,6 +1,6 @@
 <div class="title">
   {{ title() }}
-  <ng-content></ng-content>
+  <ng-content select="[title]"></ng-content>
 </div>
 
 <ul
@@ -9,10 +9,12 @@
   [class.medium]="size() === 'M'"
   [class.large]="size() === 'L'"
 >
-  @for (item of items(); track $index) {
+  @if (items().length === 0) {
+  <ng-content select="[empty]"></ng-content>
+  } @else { @for (item of items(); track $index) {
   <li
     [title]="item || '-' | noParentheses | removeTags"
     [innerHTML]="item || '-' | noParentheses"
   ></li>
-  }
+  } }
 </ul>

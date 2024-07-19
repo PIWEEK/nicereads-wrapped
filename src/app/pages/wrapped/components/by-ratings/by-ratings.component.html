@@ -6,7 +6,15 @@
 <div class="common-lists">
   @for (rating of ratings(); track $index) {
   <app-list [items]="rating.items" [size]="'M'">
-    <app-stars [stars]="rating.value"></app-stars>
+    <app-stars title [stars]="rating.value"></app-stars>
+    @if (rating.value === 0) {
+    <div empty>No unrated books. Good job rating all those books!</div>
+    } @else {
+    <div empty>
+      No books rated with {{ rating.value }}
+      {{ rating.value === 1 ? "star" : "stars" }}
+    </div>
+    }
   </app-list>
   }
 </div>
