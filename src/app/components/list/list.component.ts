@@ -10,6 +10,7 @@ import { RemoveTagsPipe } from '../../pipes/remove-tags.pipe';
   styleUrl: './list.component.css',
 })
 export class ListComponent {
-  public title = input.required<string>();
+  public title = input<string>();
+  public size = input<'S' | 'M' | 'L'>('S');
   public items = input.required<string[]>();
 }

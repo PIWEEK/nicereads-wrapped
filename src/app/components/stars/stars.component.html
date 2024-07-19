@@ -1,0 +1,7 @@
+@if (stars() === 0) {
+<div class="not-rated">not rated!!!</div>
+} @else { @for (char of '12345'; track $index) { @if (stars() >= +char) {
+<img src="/star.svg" alt="star" />
+} @else {
+<img src="/star_empty.svg" alt="star" />
+} } }

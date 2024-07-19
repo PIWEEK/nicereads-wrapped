@@ -12,9 +12,10 @@
   font-family: "Lora", serif;
 }
 
-.books-grid {
+.common-lists {
+  margin-block-start: 95px;
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(5, calc(20% - 20px));
-  margin-inline-start: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 50px;
+  max-inline-size: 1000px;
 }

@@ -1,6 +1,14 @@
-<div class="title">{{ title() }}</div>
+<div class="title">
+  {{ title() }}
+  <ng-content></ng-content>
+</div>
 
-<ul class="list-items">
+<ul
+  class="list-items"
+  [class.small]="size() === 'S'"
+  [class.medium]="size() === 'M'"
+  [class.large]="size() === 'L'"
+>
   @for (item of items(); track $index) {
   <li
     [title]="item || '-' | noParentheses | removeTags"

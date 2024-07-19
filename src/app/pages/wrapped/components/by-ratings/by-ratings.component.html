@@ -1,10 +1,12 @@
-@for (rating of ratings(); track $index) {
-<div class="bookshelf title">{{ rating.value }}</div>
-<div class="books-grid">
-  @if (rating.books.length === 0) {
-  <div class="empty">No books found</div>
-  } @else { @for (book of rating.books; track $index) {
-  <app-book [book]="book"></app-book>
-  } }
+<div class="title">
+  the average rating of your books is
+  {{ averageRating() | number : "1.1-1" }} stars!
 </div>
-}
+
+<div class="common-lists">
+  @for (rating of ratings(); track $index) {
+  <app-list [items]="rating.items" [size]="'M'">
+    <app-stars [stars]="rating.value"></app-stars>
+  </app-list>
+  }
+</div>

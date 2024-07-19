@@ -1,0 +1,9 @@
+.not-rated {
+  font-family: Lora;
+  font-size: 24;
+  color: #f1ff46;
+  font-weight: 700;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}

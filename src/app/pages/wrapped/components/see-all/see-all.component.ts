@@ -33,6 +33,9 @@ export class SeeAllComponent {
       this.lastBook.set(this.getLastBook(v));
       this.booksByMonth.set(this.getBooksByMonth(v));
       this.allBooksList.set(this.getBooksByYearAndMonth(v));
+
+      console.log(this.firstBook());
+      console.log(this.lastBook());
       return v;
     },
   });
@@ -55,6 +58,7 @@ export class SeeAllComponent {
   private getLastBook(v: Book[]): BasicBook {
     const last = v.length - 1;
     const book = v[last] as Book;
+
     return {
       title: book.title || '',
       author: book.author || book.authorLF || '',
