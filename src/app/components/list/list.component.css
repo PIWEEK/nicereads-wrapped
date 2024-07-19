@@ -29,9 +29,6 @@
     padding: 6px 12px 6px 12px;
     font-size: 18px;
     font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
 
     &:nth-child(5n + 1) {
       background: #f1ff46;
